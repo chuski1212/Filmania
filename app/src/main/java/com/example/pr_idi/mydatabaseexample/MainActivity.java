@@ -37,7 +37,7 @@ public class MainActivity extends ListActivity {
         Film film;
         switch (view.getId()) {
             case R.id.add:
-                String[] newFilm = new String[] { "Blade Runner", "Ridley Scott", "Rocky Horror Picture Show", "Jim Sharman", "The Godfather", "Francis Ford Coppola", "Toy Story", "John Lasseter" };
+                String[] newFilm = new String[] { "Blade Runner", "Ridley Scott", "Bee Movie", "Jim Sharman", "The Godfather", "Francis Ford Coppola", "Toy Story", "John Lasseter" };
                 int nextInt = new Random().nextInt(4);
                 // save the new film to the database
                 film = filmData.createFilm(newFilm[nextInt*2], newFilm[nextInt*2 + 1]);
