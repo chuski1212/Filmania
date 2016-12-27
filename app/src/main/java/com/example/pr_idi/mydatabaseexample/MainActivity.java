@@ -19,7 +19,7 @@ public class MainActivity extends ListActivity {
 
         filmData = new FilmData(this);
         filmData.open();
-
+        filmData.createFilm("Prueba1", "Prueba1_a");
         List<Film> values = filmData.getAllFilms();
 
         // use the SimpleCursorAdapter to show the

@@ -13,13 +13,36 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.ListView;
+import java.util.List;
+import android.widget.ArrayAdapter;
+
 public class FirstMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private FilmData filmData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_menu);
+
+        filmData = new FilmData(this);
+        filmData.open();
+
+        filmData.createFilm("Prueba1", "Prueba1_a");
+
+        List<Film> values = filmData.getAllFilms();
+
+        ListView mylist = (ListView) findViewById(R.id.mylist);
+        ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, values);
+        mylist.setAdapter(adapter);
+        // use the SimpleCursorAdapter to show the
+        // elements in a ListView
+        //ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
+        //        android.R.layout.simple_list_item_1, values);
+        //setListAdapter(adapter);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
