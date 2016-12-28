@@ -8,7 +8,6 @@
         android:label="Filmania"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".FirstMenu"
             android:label="Filmania"
