@@ -4,6 +4,7 @@ package com.example.pr_idi.mydatabaseexample;
  * MySQLiteHelper
  * Created by pr_idi on 10/11/16.
  */
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -45,10 +46,40 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
-        filmData.createFilm("Blade Runner", "Ridley Scott", "United States", 1982, "Harrison Ford", 8);
-        filmData.createFilm("Bee Movie", "Jim Sharman", "United States", 2007, "Jerry Seinfeld", 6);
-        filmData.createFilm("The Godfather", "Francis Ford Coppola", "United States", 1972, "Al Pacino", 8);
-        filmData.createFilm("Toy Story", "John Lasseter", "United States", 1995, "Tom Hanks", 8);
+
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_TITLE, "Blade Runner");
+        values.put(MySQLiteHelper.COLUMN_DIRECTOR, "Ridley Scott");
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, "United States");
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 1982);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Harrison Ford");
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 8);
+        database.insert(TABLE_FILMS, null, values);
+
+        values.put(MySQLiteHelper.COLUMN_TITLE, "Bee Movie");
+        values.put(MySQLiteHelper.COLUMN_DIRECTOR, "Jim Sharman");
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, "United States");
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 2007);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Jerry Seinfeld");
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 6);
+        database.insert(TABLE_FILMS, null, values);
+
+        values.put(MySQLiteHelper.COLUMN_TITLE, "The Godfather");
+        values.put(MySQLiteHelper.COLUMN_DIRECTOR, "Francis Ford Coppola");
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, "United States");
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 1972);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Al Pacino");
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 8);
+        database.insert(TABLE_FILMS, null, values);
+
+        values.put(MySQLiteHelper.COLUMN_TITLE, "Toy Story");
+        values.put(MySQLiteHelper.COLUMN_DIRECTOR, "John Lasseter");
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, "United States");
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 1995);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Tom Hanks");
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 8);
+        database.insert(TABLE_FILMS, null, values);
+
     }
 
     @Override
