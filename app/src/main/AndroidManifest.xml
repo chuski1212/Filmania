@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RecyclerView"></activity>
+        <activity android:name=".ModificarCritica"></activity>
     </application>
 
 </manifest>
