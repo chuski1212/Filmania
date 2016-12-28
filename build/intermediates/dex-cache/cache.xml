@@ -7,17 +7,8 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="a65a7ad300ee58c2e826a34d2260743d12defba0">
+        sha1="b4e93374a30469dfedf2f06c6943b2411ce25bee">
         <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b69f57de17b1e7720f126216f63dbb1704cbd281\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="551eeaa53b7d0019bdc2411ea50cfe172768fd83">
-        <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_646b9ab0c2fd5ea1a6f567a89cba29f5f5e8033b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -27,6 +18,24 @@
         revision="22.0.1"
         sha1="1821601ddbec5ff125653097812823388700af74">
         <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-22.2.1_de0b4c7594a020ec3b03f82e394bbc43a6bd4b1a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-22.2.1_753aba61723408d6d40f5a31b4d28e9d81e8b523\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="8e9f3e566f604d58aef238510af3d00e7b884d33">
+        <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_646b9ab0c2fd5ea1a6f567a89cba29f5f5e8033b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -54,15 +63,6 @@
         revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.2.1_9814dd682ba5cd082f7f2a7d317b61955211eb8e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="C:\Users\JORGEPC\Desktop\AndroidIDI\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-22.2.1_753aba61723408d6d40f5a31b4d28e9d81e8b523\classes.dex" />
     </item>
 
 </items>
