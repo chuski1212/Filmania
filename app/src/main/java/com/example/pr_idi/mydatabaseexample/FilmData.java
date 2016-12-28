@@ -25,7 +25,7 @@ public class FilmData {
             MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_DIRECTOR};
 
     public FilmData(Context context) {
-        dbHelper = new MySQLiteHelper(context, this);
+        dbHelper = new MySQLiteHelper(context);
     }
 
     public void open() throws SQLException {

@@ -24,7 +24,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "films.db";
     private static final int DATABASE_VERSION = 1;
 
-    private FilmData filmData;
+
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table " + TABLE_FILMS + "( "
@@ -37,9 +37,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_CRITICS_RATE + " integer"
             + ");";
 
-    public MySQLiteHelper(Context context, FilmData films) {
+    public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.filmData = films;
+
 
     }
 
