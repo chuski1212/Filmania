@@ -25,18 +25,24 @@ public class FilmData {
             MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_DIRECTOR};
 
     public FilmData(Context context) {
-        dbHelper = new MySQLiteHelper(context);
+        dbHelper = new MySQLiteHelper(context, this);
     }
 
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
+        //database.delete(MySQLiteHelper.TABLE_FILMS, null, null);
+        //createFilm("Blade Runner", "Ridley Scott", "United States", 1982, "Harrison Ford", 8);
+        //createFilm("Bee Movie", "Jim Sharman", "United States", 2007, "Jerry Seinfeld", 6);
+        //createFilm("The Godfather", "Francis Ford Coppola", "United States", 1972, "Al Pacino", 8);
+        //createFilm("Toy Story", "John Lasseter", "United States", 1995, "Tom Hanks", 8);
     }
 
     public void close() {
         dbHelper.close();
     }
 
-    public Film createFilm(String title, String director) {
+    public Film createFilm(String title, String director, String country, int year,
+                           String protagonist, int rate) {
         ContentValues values = new ContentValues();
         Log.d("Creating", "Creating " + title + " " + director);
 
@@ -45,11 +51,11 @@ public class FilmData {
         values.put(MySQLiteHelper.COLUMN_TITLE, title);
         values.put(MySQLiteHelper.COLUMN_DIRECTOR, director);
 
-        // Invented data
-        values.put(MySQLiteHelper.COLUMN_COUNTRY, "Catalonia");
-        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, 2014);
-        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, "Do not know");
-        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, 5);
+
+        values.put(MySQLiteHelper.COLUMN_COUNTRY, country);
+        values.put(MySQLiteHelper.COLUMN_YEAR_RELEASE, year);
+        values.put(MySQLiteHelper.COLUMN_PROTAGONIST, protagonist);
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, rate);
 
         // Actual insertion of the data using the values variable
         long insertId = database.insert(MySQLiteHelper.TABLE_FILMS, null,
@@ -79,6 +85,22 @@ public class FilmData {
         System.out.println("Film deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_FILMS, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
+    }
+
+    public List<String> getAllFilmsTitle() {
+        List<String> comments = new ArrayList<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
+                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE+" ASC");
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            comments.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
     }
 
     public List<Film> getAllFilms() {

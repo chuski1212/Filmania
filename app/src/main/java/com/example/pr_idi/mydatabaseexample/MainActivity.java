@@ -19,14 +19,14 @@ public class MainActivity extends ListActivity {
 
         filmData = new FilmData(this);
         filmData.open();
-        filmData.createFilm("Prueba1", "Prueba1_a");
-        List<Film> values = filmData.getAllFilms();
+        //filmData.createFilm("Prueba1", "Prueba1_a");
+        //List<Film> values = filmData.getAllFilms();
 
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
-        ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, values);
-        setListAdapter(adapter);
+        //ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
+        //        android.R.layout.simple_list_item_1, values);
+        //setListAdapter(adapter);
     }
 
     // Will be called via the onClick attribute
@@ -40,8 +40,8 @@ public class MainActivity extends ListActivity {
                 String[] newFilm = new String[] { "Blade Runner", "Ridley Scott", "Bee Movie", "Jim Sharman", "The Godfather", "Francis Ford Coppola", "Toy Story", "John Lasseter" };
                 int nextInt = new Random().nextInt(4);
                 // save the new film to the database
-                film = filmData.createFilm(newFilm[nextInt*2], newFilm[nextInt*2 + 1]);
-                adapter.add(film);
+                //film = filmData.createFilm(newFilm[nextInt*2], newFilm[nextInt*2 + 1]);
+                //adapter.add(film);
                 break;
             case R.id.delete:
                 if (getListAdapter().getCount() > 0) {

@@ -29,19 +29,12 @@ public class FirstMenu extends AppCompatActivity
         filmData = new FilmData(this);
         filmData.open();
 
-        filmData.createFilm("Prueba1", "Prueba1_a");
-
-        List<Film> values = filmData.getAllFilms();
+        List<String> values = filmData.getAllFilmsTitle();
 
         ListView mylist = (ListView) findViewById(R.id.mylist);
-        ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, values);
         mylist.setAdapter(adapter);
-        // use the SimpleCursorAdapter to show the
-        // elements in a ListView
-        //ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
-        //        android.R.layout.simple_list_item_1, values);
-        //setListAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,5 +113,17 @@ public class FirstMenu extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        filmData.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        filmData.close();
+        super.onPause();
     }
 }

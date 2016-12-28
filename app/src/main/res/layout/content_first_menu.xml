@@ -13,35 +13,9 @@
     tools:context="com.example.pr_idi.mydatabaseexample.FirstMenu"
     tools:showIn="@layout/app_bar_first_menu">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:text="Añadir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="Borrar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button3"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mylist" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:id="@+id/mylist" />
 
 </RelativeLayout>

@@ -23,6 +23,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "films.db";
     private static final int DATABASE_VERSION = 1;
 
+    private FilmData filmData;
+
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table " + TABLE_FILMS + "( "
             + COLUMN_ID + " integer primary key autoincrement, "
@@ -34,13 +36,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_CRITICS_RATE + " integer"
             + ");";
 
-    public MySQLiteHelper(Context context) {
+    public MySQLiteHelper(Context context, FilmData films) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.filmData = films;
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+        filmData.createFilm("Blade Runner", "Ridley Scott", "United States", 1982, "Harrison Ford", 8);
+        filmData.createFilm("Bee Movie", "Jim Sharman", "United States", 2007, "Jerry Seinfeld", 6);
+        filmData.createFilm("The Godfather", "Francis Ford Coppola", "United States", 1972, "Al Pacino", 8);
+        filmData.createFilm("Toy Story", "John Lasseter", "United States", 1995, "Tom Hanks", 8);
     }
 
     @Override
