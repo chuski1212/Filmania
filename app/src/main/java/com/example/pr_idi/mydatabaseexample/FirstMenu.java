@@ -64,20 +64,39 @@ public class FirstMenu extends AppCompatActivity
         listaFilms = ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilms();
         ListView mylist = (ListView) findViewById(R.id.mylist);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, getTitles(listaFilms));
+                android.R.layout.simple_list_item_1, getTitles());
         mylist.setAdapter(adapter);
         registerForContextMenu(mylist);
     }
 
-    private List<String> getTitles(List<Film> peliculas) {
+    private List<String> getTitles() {
         List<String> titulos = new ArrayList<>();
-        int n = peliculas.size();
+        int n = listaFilms.size();
         for (int i = 0; i < n; ++i) {
-            titulos.add(peliculas.get(i).getTitle());
+            titulos.add(listaFilms.get(i).getTitle());
         }
         return titulos;
     }
 
+    public void filter(View view) {
+        TextView authorText = (TextView) findViewById(R.id.authortext);
+        String protagonist = authorText.getText().toString();
+        if (!protagonist.equals("")) {
+            System.out.println(protagonist);
+            listaFilms = ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilmsActorLimited(protagonist);
+            ListView mylist = (ListView) findViewById(R.id.mylist);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_list_item_1, getTitles());
+            mylist.setAdapter(adapter);
+            registerForContextMenu(mylist);
+        }
+    }
+
+    public void reset(View view) {
+        TextView authorText = (TextView) findViewById(R.id.authortext);
+        authorText.setText("");
+        loadList();
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -170,6 +189,8 @@ public class FirstMenu extends AppCompatActivity
     protected void onResume() {
         ((GlobalDBControler) this.getApplication()).open();
         loadList();
+        TextView authorText = (TextView) findViewById(R.id.authortext);
+        authorText.setText("");
         super.onResume();
     }
 

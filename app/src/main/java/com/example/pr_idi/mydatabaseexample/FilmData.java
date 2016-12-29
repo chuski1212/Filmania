@@ -99,15 +99,16 @@ public class FilmData {
                 + " = " + id, null);
     }
 
-    public List<String> getAllFilmsTitle() {
-        List<String> comments = new ArrayList<>();
+    public List<Film> getAllFilmsActorLimited(String protagonist) {
+        List<Film> comments = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
-                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE+" ASC");
+                allColumns, MySQLiteHelper.COLUMN_PROTAGONIST + " = " + "'"+protagonist+"'", null, null, null, MySQLiteHelper.COLUMN_TITLE+" ASC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            comments.add(cursor.getString(1));
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
             cursor.moveToNext();
         }
         // make sure to close the cursor

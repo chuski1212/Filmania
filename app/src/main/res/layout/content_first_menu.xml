@@ -24,23 +24,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Author name"
+            android:text=""
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/authortext"
+            android:hint="Actor name"
             android:layout_weight="1" />
 
         <Button
             android:text="Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/filter"
+            android:onClick="filter"
             android:layout_weight="1" />
 
         <Button
             android:text="Reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/reset"
+            android:onClick="reset"
             android:layout_weight="1" />
 
     </LinearLayout>
