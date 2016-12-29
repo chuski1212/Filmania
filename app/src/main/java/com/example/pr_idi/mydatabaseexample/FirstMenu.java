@@ -1,5 +1,6 @@
 package com.example.pr_idi.mydatabaseexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.List;
 import android.widget.ArrayAdapter;
@@ -41,6 +43,15 @@ public class FirstMenu extends AppCompatActivity
 
         registerForContextMenu(mylist);
 
+        /*
+        mylist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+                return onLongListItemClick(v,pos,id);
+            }
+        });
+        */
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,6 +66,13 @@ public class FirstMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    protected boolean onLongListItemClick(View v, int pos, long id) {
+        Intent actModificar = new Intent(this, ModificarCritica.class);
+        startActivity(actModificar);
+        return true;
+    }
+
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -66,16 +84,19 @@ public class FirstMenu extends AppCompatActivity
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        AdapterViewCompat.AdapterContextMenuInfo info = (AdapterViewCompat.AdapterContextMenuInfo) item.getMenuInfo();
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch(item.getItemId()) {
             case R.id.modify:
                 // add stuff here
+                Intent actModificar = new Intent(this, ModificarCritica.class);
+                startActivity(actModificar);
                 return true;
 
             default:
                 return super.onContextItemSelected(item);
         }
     }
+
 
     @Override
     public void onBackPressed() {
