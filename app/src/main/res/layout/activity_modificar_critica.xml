@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
+        android:maxLength="4"
         android:id="@+id/newCritica" />
 
     <Button
