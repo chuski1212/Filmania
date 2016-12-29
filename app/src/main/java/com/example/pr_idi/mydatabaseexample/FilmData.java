@@ -22,7 +22,12 @@ public class FilmData {
 
     // Here we only select Title and Director, must select the appropriate columns
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_TITLE, MySQLiteHelper.COLUMN_DIRECTOR};
+                                    MySQLiteHelper.COLUMN_TITLE,
+                                    MySQLiteHelper.COLUMN_COUNTRY,
+                                    MySQLiteHelper.COLUMN_YEAR_RELEASE,
+                                    MySQLiteHelper.COLUMN_DIRECTOR,
+                                    MySQLiteHelper.COLUMN_PROTAGONIST,
+                                    MySQLiteHelper.COLUMN_CRITICS_RATE};
 
     public FilmData(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -80,6 +85,13 @@ public class FilmData {
         return newFilm;
     }
 
+    public void updateRate(long idfilm, int newrate) {
+        ContentValues newvalues = new ContentValues();
+        newvalues.put(MySQLiteHelper.COLUMN_CRITICS_RATE, newrate);
+        database.update(MySQLiteHelper.TABLE_FILMS, newvalues, MySQLiteHelper.COLUMN_ID + " = " + idfilm, null);
+
+    }
+
     public void deleteFilm(Film film) {
         long id = film.getId();
         System.out.println("Film deleted with id: " + id);
@@ -122,9 +134,16 @@ public class FilmData {
 
     private Film cursorToFilm(Cursor cursor) {
         Film film = new Film();
+
+
         film.setId(cursor.getLong(0));
         film.setTitle(cursor.getString(1));
-        film.setDirector(cursor.getString(2));
+        film.setCountry(cursor.getString(2));
+        film.setYear(cursor.getInt(3));
+        film.setDirector(cursor.getString(4));
+        film.setProtagonist(cursor.getString(5));
+        film.setCritics_rate(cursor.getInt(6));
+
         return film;
     }
 }

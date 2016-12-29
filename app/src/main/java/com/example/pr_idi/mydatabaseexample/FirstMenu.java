@@ -27,34 +27,24 @@ import android.widget.TextView;
 
 public class FirstMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private FilmData filmData;
+    //private FilmData filmData;
     private List<Film> listaFilms;
+    public final static String EXTRA_IDFILM = "com.example.filmania.idfilm";
+    public final static String EXTRA_TITLEFILM = "com.example.filmania.titlefilm";
+    public final static String EXTRA_RATEFILM = "com.example.filmania.ratefilm";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_menu);
 
-        filmData = new FilmData(this);
-        filmData.open();
+        ((GlobalDBControler) this.getApplication()).init(this);
 
-        listaFilms = filmData.getAllFilms();
 
-        ListView mylist = (ListView) findViewById(R.id.mylist);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, getTitles(listaFilms));
-        mylist.setAdapter(adapter);
+        listaFilms = ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilms();
 
-        registerForContextMenu(mylist);
-
-        /*
-        mylist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
-                return onLongListItemClick(v,pos,id);
-            }
-        });
-        */
+        loadList();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,6 +60,15 @@ public class FirstMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void loadList() {
+        listaFilms = ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilms();
+        ListView mylist = (ListView) findViewById(R.id.mylist);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, getTitles(listaFilms));
+        mylist.setAdapter(adapter);
+        registerForContextMenu(mylist);
+    }
+
     private List<String> getTitles(List<Film> peliculas) {
         List<String> titulos = new ArrayList<>();
         int n = peliculas.size();
@@ -77,11 +76,6 @@ public class FirstMenu extends AppCompatActivity
             titulos.add(peliculas.get(i).getTitle());
         }
         return titulos;
-    }
-    protected boolean onLongListItemClick(View v, int pos, long id) {
-        Intent actModificar = new Intent(this, ModificarCritica.class);
-        startActivity(actModificar);
-        return true;
     }
 
 
@@ -91,7 +85,6 @@ public class FirstMenu extends AppCompatActivity
         AdapterView.AdapterContextMenuInfo info =
                 (AdapterView.AdapterContextMenuInfo) menuInfo;
         String selectedWord = ((TextView) info.targetView).getText().toString();
-        long selectedWordId = info.id;
         menu.setHeaderTitle(selectedWord);
         if (v.getId()==R.id.mylist) {
             MenuInflater inflater = getMenuInflater();
@@ -102,10 +95,14 @@ public class FirstMenu extends AppCompatActivity
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
         switch(item.getItemId()) {
             case R.id.modify:
-                // add stuff here
+
                 Intent actModificar = new Intent(this, ModificarCritica.class);
+                actModificar.putExtra(EXTRA_IDFILM,listaFilms.get(info.position).getId());
+                actModificar.putExtra(EXTRA_RATEFILM,listaFilms.get(info.position).getCritics_rate());
+                actModificar.putExtra(EXTRA_TITLEFILM,listaFilms.get(info.position).getTitle());
                 startActivity(actModificar);
                 return true;
 
@@ -168,15 +165,17 @@ public class FirstMenu extends AppCompatActivity
         return true;
     }
 
+
     @Override
     protected void onResume() {
-        filmData.open();
+        ((GlobalDBControler) this.getApplication()).open();
+        loadList();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        filmData.close();
+
         super.onPause();
     }
 }
