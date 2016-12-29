@@ -19,12 +19,16 @@ import android.view.MenuItem;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 public class FirstMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FilmData filmData;
+    private List<Film> listaFilms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +38,11 @@ public class FirstMenu extends AppCompatActivity
         filmData = new FilmData(this);
         filmData.open();
 
-        List<String> values = filmData.getAllFilmsTitle();
+        listaFilms = filmData.getAllFilms();
 
         ListView mylist = (ListView) findViewById(R.id.mylist);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, values);
+                android.R.layout.simple_list_item_1, getTitles(listaFilms));
         mylist.setAdapter(adapter);
 
         registerForContextMenu(mylist);
@@ -66,6 +70,14 @@ public class FirstMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private List<String> getTitles(List<Film> peliculas) {
+        List<String> titulos = new ArrayList<>();
+        int n = peliculas.size();
+        for (int i = 0; i < n; ++i) {
+            titulos.add(peliculas.get(i).getTitle());
+        }
+        return titulos;
+    }
     protected boolean onLongListItemClick(View v, int pos, long id) {
         Intent actModificar = new Intent(this, ModificarCritica.class);
         startActivity(actModificar);
@@ -76,6 +88,11 @@ public class FirstMenu extends AppCompatActivity
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+        AdapterView.AdapterContextMenuInfo info =
+                (AdapterView.AdapterContextMenuInfo) menuInfo;
+        String selectedWord = ((TextView) info.targetView).getText().toString();
+        long selectedWordId = info.id;
+        menu.setHeaderTitle(selectedWord);
         if (v.getId()==R.id.mylist) {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu_list, menu);
