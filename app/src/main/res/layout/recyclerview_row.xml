@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/director"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/year" />
+    <TextView
+        android:id="@+id/protagonist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/director"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@+id/country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/protagonist"
+        android:layout_alignParentLeft="true"
+        />
+    <TextView
+        android:id="@id/year"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignParentRight="true" />
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/year"
+        android:layout_alignParentRight="true"
+        />
+</RelativeLayout>
