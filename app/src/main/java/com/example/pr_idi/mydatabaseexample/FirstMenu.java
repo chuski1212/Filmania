@@ -170,7 +170,8 @@ public class FirstMenu extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_complete) {
-            // Handle the camera action
+            Intent nextAct = new Intent(this,RecyclerView.class);
+            startActivity(nextAct);
         } else if (id == R.id.nav_new) {
 
         } else if (id == R.id.nav_help) {
