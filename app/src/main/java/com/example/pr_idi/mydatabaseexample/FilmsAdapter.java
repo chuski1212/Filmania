@@ -73,9 +73,9 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder>{
         TextView country = viewHolder.pCountry;
         country.setText(film.getCountry());
         TextView year = viewHolder.pYear;
-        year.setText(film.getYear());
+        year.setText(Integer.toString(film.getYear()));
         TextView rate = viewHolder.pRate;
-        rate.setText(film.getCritics_rate());
+        rate.setText(Integer.toString(film.getCritics_rate()));
     }
     @Override
     public int getItemCount(){
