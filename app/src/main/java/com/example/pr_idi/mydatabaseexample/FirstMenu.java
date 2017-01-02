@@ -175,9 +175,12 @@ public class FirstMenu extends AppCompatActivity
         } else if (id == R.id.nav_new) {
 
         } else if (id == R.id.nav_help) {
+            Intent nextAct = new Intent(this, Help.class);
+            startActivity(nextAct);
 
         } else if (id == R.id.nav_about) {
-
+            Intent nextAct = new Intent(this, About.class);
+            startActivity(nextAct);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
