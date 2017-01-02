@@ -91,6 +91,11 @@ public class FilmData {
         database.update(MySQLiteHelper.TABLE_FILMS, newvalues, MySQLiteHelper.COLUMN_ID + " = " + idfilm, null);
 
     }
+    public void deleteFilmID(long id) {
+        System.out.println("Film deleted with id: " + id);
+        database.delete(MySQLiteHelper.TABLE_FILMS, MySQLiteHelper.COLUMN_ID
+                + " = " + id, null);
+    }
 
     public void deleteFilm(Film film) {
         long id = film.getId();
