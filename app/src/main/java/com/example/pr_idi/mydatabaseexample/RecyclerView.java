@@ -36,11 +36,7 @@ public class RecyclerView extends AppCompatActivity {
         adapter.updateFilms(((GlobalDBControler) this.getApplication()).getFilmData().getAllFilmsYear());
         return super.onContextItemSelected(item);
     }
-
-    @Override
-    public void onBackPressed(){
-        adapter.updateFilms(((GlobalDBControler) this.getApplication()).getFilmData().getAllFilmsYear());
-    }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,22 +63,6 @@ public class RecyclerView extends AppCompatActivity {
             }
         });
 
-        MenuItemCompat.setOnActionExpandListener(menu.findItem(R.id.action_search), new MenuItemCompat.OnActionExpandListener() {
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                adapter.updateFilms(db.getFilmData().getAllFilmsYear());
-                searchView.clearFocus();
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                searchView.setQuery("", false);
-                adapter.updateFilms(db.getFilmData().getAllFilmsYear());
-                searchView.clearFocus();
-                return true;
-            }
-        });
         return super.onCreateOptionsMenu(menu);
     }
 
