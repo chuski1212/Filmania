@@ -121,11 +121,42 @@ public class FilmData {
         return comments;
     }
 
+    public List<Film> getAllFilmsTitleLimited(String title) {
+        List<Film> comments = new ArrayList<>();
+        String sql = "SELECT * FROM films WHERE title LIKE '%" + title + "%' ORDER BY year_release DESC";
+        Cursor cursor = database.rawQuery(sql, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
+    }
     public List<Film> getAllFilms() {
         List<Film> comments = new ArrayList<>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
                 allColumns, null, null, null, null, MySQLiteHelper.COLUMN_TITLE+" ASC");
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Film comment = cursorToFilm(cursor);
+            comments.add(comment);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
+    }
+    public List<Film> getAllFilmsYear() {
+        List<Film> comments = new ArrayList<>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_FILMS,
+                allColumns, null, null, null, null, MySQLiteHelper.COLUMN_YEAR_RELEASE+" DESC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
