@@ -52,6 +52,12 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder>{
     private List<Film> pFilms;
     private Context pContext;
 
+
+    public void updateFilms(List<Film> films){
+        pFilms = films;
+        this.notifyDataSetChanged();
+    }
+
     public FilmsAdapter(Context context, List<Film> films){
         pFilms = films;
         pContext = context;
