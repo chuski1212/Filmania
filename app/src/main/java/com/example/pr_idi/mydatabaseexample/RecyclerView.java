@@ -36,7 +36,7 @@ public class RecyclerView extends AppCompatActivity {
         adapter.updateFilms(((GlobalDBControler) this.getApplication()).getFilmData().getAllFilmsYear());
         return super.onContextItemSelected(item);
     }
-    
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
