@@ -45,6 +45,7 @@ public class RecyclerView extends AppCompatActivity {
         inflater.inflate(R.menu.menu_searchbar_recyclerview, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setQueryHint("Search by title");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
