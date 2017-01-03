@@ -3,6 +3,9 @@ package com.example.pr_idi.mydatabaseexample;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.List;
 
@@ -18,5 +21,11 @@ public class RecyclerView extends AppCompatActivity {
         FilmsAdapter adapter = new FilmsAdapter(this, ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilms());
         recyclerFilms.setAdapter(adapter);
         recyclerFilms.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        ((GlobalDBControler) this.getApplication()).getFilmData().deleteFilmID(item.getItemId());
+        return super.onContextItemSelected(item);
     }
 }
