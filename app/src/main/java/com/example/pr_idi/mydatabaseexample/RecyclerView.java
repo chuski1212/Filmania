@@ -23,6 +23,7 @@ public class RecyclerView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+        setTitle("Complete View");
 
         recyclerFilms = (android.support.v7.widget.RecyclerView) findViewById(R.id.filmview);
         adapter = new FilmsAdapter(this, ((GlobalDBControler) this.getApplication()).getFilmData().getAllFilmsYear());
