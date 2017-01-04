@@ -174,6 +174,8 @@ public class FirstMenu extends AppCompatActivity
             startActivity(nextAct);
         } else if (id == R.id.nav_new) {
 
+            Intent nextAct = new Intent(this, AddFilm.class);
+            startActivity(nextAct);
         } else if (id == R.id.nav_help) {
             Intent nextAct = new Intent(this, Help.class);
             startActivity(nextAct);
