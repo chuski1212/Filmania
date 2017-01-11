@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:text="How do I navigate the different parts of the application?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:text="How can I do a search by protagonist of the titles of the films?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:text="How can I see all the titles when I have done a search?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:text="How can I change the rating of a movie?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
@@ -141,8 +141,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:text="Texto"
+                    android:textSize="17sp"
+                    android:text="How can I see the full data in the films?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
 
@@ -150,8 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="texto
-                    "
+                    android:text="Click on the 'Complete View' option in the menu to see all the info about the films(Name, year, country...), also, you can search by name of the film in the Complete View."
                     android:textColor="@android:color/black"/>
 
             </LinearLayout>
@@ -169,8 +168,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:text="Texto"
+                    android:textSize="17sp"
+                    android:text="How can I delete a film? "
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
 
@@ -178,8 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="texto
-                    "
+                    android:text="In the Complete View, long click on a film. A menu will appear with the option 'Delete'."
                     android:textColor="@android:color/black"/>
 
             </LinearLayout>
@@ -198,8 +196,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:text="Texto"
+                    android:textSize="17sp"
+                    android:text="How can I add a new film?"
                     android:textColor="@android:color/black"
                     android:layout_marginBottom="5dp"/>
 
@@ -207,8 +205,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="texto
-                    "
+                    android:text="In the main menu, click on the 'New Film' option. Then you must fill a form with all the information about the new film."
                     android:textColor="@android:color/black"/>
 
             </LinearLayout>
